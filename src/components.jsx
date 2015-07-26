@@ -52,7 +52,7 @@ var Main = React.createClass({
 
 var routes = (
   <Route handler={App}>
-    <Route name="bootcamp" path="bootcamp/:code" handler={Main}/>
+    <Route name="bootcamp" path="bootcamp/beer/:code" handler={Main}/>
     <Route path="/" handler={Main}/>
   </Route>
 );
