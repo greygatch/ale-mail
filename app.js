@@ -29,19 +29,15 @@ app.get('/beer-name/:name', function(req, res){
 })
 app.get('/beer-style/:style', function(req, res){
 
+  var returnData;
+
   brewdb.style.find({name: req.params.style }, function(err, response){
     if(err){ res.status(400); }
+    console.log('test');
 
-    if(!response){
-      brewdb.beer.find({name: req.params.category + '*' }, function(err, data){
-        returnData = data;
-        res.json(returnData);
-      });
-    }
     if (response){
       res.json(response)
     }
-    console.log('test');
   });
 })
 
