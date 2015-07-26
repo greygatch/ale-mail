@@ -11,6 +11,7 @@ app.use(express.static(__dirname + '/public'))
 app.get('/beer-name/:name', function(req, res){
 
   var returnData;
+  console.log('test');
 
   brewdb.beer.find({ withBreweries: "N", name: req.params.name }, function(err, response){
     if(err){ res.status(400); }
@@ -24,20 +25,12 @@ app.get('/beer-name/:name', function(req, res){
     if (response){
       res.json(response)
     }
-    console.log('test');
   });
 })
-app.get('/beer-style/:style', function(req, res){
+app.get('/beer-id/:id', function(req, res){
 
-  var returnData;
-
-  brewdb.style.find({name: req.params.style }, function(err, response){
-    if(err){ res.status(400); }
-    console.log('test');
-
-    if (response){
-      res.json(response)
-    }
+  brewdb.style.all(function(err, response){
+    res.json(response);
   });
 })
 
